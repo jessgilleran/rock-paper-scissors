@@ -41,8 +41,34 @@ function userPlay() {
             alert("Incorrect input, enter rock, paper or scissors");
         }
     }
-    
 
+    return userChoice;
+}
+
+//This function takes the computer and users choices and decides the winner
+function oneRound(compChoice,playerChoice) {
+    //Determine if a tie
+    if (compChoice === playerChoice) {
+        console.log('It\'s a tie!');
+        return 0;
+    } else if (compChoice === 'rock' && playerChoice == 'scissors') {
+        console.log('Sorry, computer wins');
+        return 0;
+    } else if (compChoice === 'rock' && playerChoice === 'paper') {
+        console.log('You win!');
+        return 1;
+    } else if (compChoice === 'paper' && playerChoice === 'rock') {
+        console.log('Sorry, computer wins');
+        return 0;
+    } else if (compChoice === 'paper' && playerChoice === 'scissors') {
+        console.log('You win!');
+        return 1;
+    } else if (compChoice === 'scissors' && playerChoice === 'rock') {
+        console.log('You win!');
+        return 1;
+    } else if (compChoice === 'scissors' && playerChoice === 'paper') {
+        console.log('Sorry, computer wins');
+        return 0;
 }
 
 </script>
