@@ -45,30 +45,48 @@ function userPlay() {
     return userChoice;
 }
 
-//This function takes the computer and users choices and decides the winner
+//This function takes the computer and player choices and decides the winner
 function oneRound(compChoice,playerChoice) {
     //Determine if a tie
     if (compChoice === playerChoice) {
         console.log('It\'s a tie!');
         return 0;
+    //Determine the rest of the conditions. If the player wins a 'P' is returned
+    //if the computer wins a 'C' is returned
     } else if (compChoice === 'rock' && playerChoice == 'scissors') {
         console.log('Sorry, computer wins');
-        return 0;
+        return 'C';
     } else if (compChoice === 'rock' && playerChoice === 'paper') {
         console.log('You win!');
-        return 1;
+        return 'P';
     } else if (compChoice === 'paper' && playerChoice === 'rock') {
         console.log('Sorry, computer wins');
-        return 0;
+        return 'C';
     } else if (compChoice === 'paper' && playerChoice === 'scissors') {
         console.log('You win!');
-        return 1;
+        return 'P';
     } else if (compChoice === 'scissors' && playerChoice === 'rock') {
         console.log('You win!');
-        return 1;
+        return 'P';
     } else if (compChoice === 'scissors' && playerChoice === 'paper') {
         console.log('Sorry, computer wins');
-        return 0;
+        return 'C';
+}
+
+//Plays 5 rounds of the game and reports result at the end
+function game() {
+    
+    let compScore = 0;
+    let playerScore = 0;
+    for (x = 0; i < 5; i++) {
+        //Get computer choice
+        let compChoice = computerPlay()
+        //Get players choice
+        let playerChoice = userPlay()
+        //Play one round of the game
+        let result = oneRound(compChoice,playerChoice)
+
+    }
 }
 
 </script>
