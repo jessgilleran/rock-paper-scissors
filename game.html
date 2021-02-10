@@ -1,8 +1,8 @@
 <!--Take choice of rock, paper or scissors from user, should be case insensitive
 A function will randomly choose for the computer
-A function will take the user and computer choices and decide the winner, and return a string
+A function will take the user and computer choices and decide the winner, and return a result
 A function will loop 5 times and keep score of the games
-After 5 games are played, the winner and loser are reported-->
+After 5 games are played, the winner is reported-->
 
 <script>
 //This function generates a random number between 1 and 3 inclusive
@@ -41,7 +41,6 @@ function userPlay() {
             alert("Incorrect input, enter rock, paper or scissors");
         }
     }
-
     return userChoice;
 }
 
@@ -79,11 +78,9 @@ function game() {
     //Initialize computer and player scores
     let compScore = 0;
     let playerScore = 0;
-
     let result;
+
     for (i = 0; i < 5; i++) {
-        //Initialize result to empty string
-        result = '';
         //Get computer choice
         let compChoice = computerPlay()
         //Get players choice
@@ -91,13 +88,18 @@ function game() {
         //Play one round of the game
         result = oneRound(compChoice,playerChoice);
         //Add to the score tallies
-        (result === 'P')? playerScore += 1:compScore += 1;
+        if (result === 'P') {
+            playerScore += 1;
+        } else if(result === 'C') {
+            compScore += 1;
+        }
     }
+    console.log('Player: ' + playerScore + '. Computer: ' + compScore);
     //Print results
     if (compScore === playerScore) {
         console.log('End of 5 rounds. It\'s a tie!');
     } else {
-        console.log('End of 5 rounds. ' + (compScore > playerScore)? 'The computer wins':'You won!');
+        console.log('End of 5 rounds. ' + ((compScore > playerScore)? 'The computer wins':'You won!'));
     }
 }
 
