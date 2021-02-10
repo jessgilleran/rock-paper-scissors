@@ -75,7 +75,7 @@ function oneRound(compChoice,playerChoice) {
 
 //Plays 5 rounds of the game and reports result at the end
 function game() {
-    
+    //Initialize computer and player scores
     let compScore = 0;
     let playerScore = 0;
     for (x = 0; i < 5; i++) {
@@ -85,8 +85,9 @@ function game() {
         let playerChoice = userPlay()
         //Play one round of the game
         let result = oneRound(compChoice,playerChoice)
-
+        (result === 'P')? playerScore += 1:compScore += 1;
     }
+    console.log('End of 5 rounds. ' + (compScore > playerScore)? 'The computer wins':'You won!');
 }
 
 </script>
