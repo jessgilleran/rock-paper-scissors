@@ -24,15 +24,15 @@ function computerPlay() {
     } else {
         return 'scissors';
     }
-
 }
 
 //This function gets the users choice
 function userPlay() {
     let validChoice = false;
+    let userChoice;
 
     while (validChoice === false) {
-        let userChoice = window.prompt("Choose rock, paper or scissors: ");
+        userChoice = window.prompt("Choose rock, paper or scissors: ");
         //Lower case user choice to account for all cases
         userChoice = userChoice.toLowerCase();
         if (userChoice === 'rock'|| userChoice === 'paper' || userChoice === 'scissors') {
@@ -54,23 +54,24 @@ function oneRound(compChoice,playerChoice) {
     //Determine the rest of the conditions. If the player wins a 'P' is returned
     //if the computer wins a 'C' is returned
     } else if (compChoice === 'rock' && playerChoice == 'scissors') {
-        console.log('Sorry, computer wins');
+        console.log('Sorry, computer wins with rock vs. scissors.');
         return 'C';
     } else if (compChoice === 'rock' && playerChoice === 'paper') {
-        console.log('You win!');
+        console.log('You win with paper vs rock.');
         return 'P';
     } else if (compChoice === 'paper' && playerChoice === 'rock') {
-        console.log('Sorry, computer wins');
+        console.log('Sorry, computer wins with paper vs. rock.');
         return 'C';
     } else if (compChoice === 'paper' && playerChoice === 'scissors') {
-        console.log('You win!');
+        console.log('You win with scissors vs. paper.');
         return 'P';
     } else if (compChoice === 'scissors' && playerChoice === 'rock') {
-        console.log('You win!');
+        console.log('You win with rock vs scissors.');
         return 'P';
     } else if (compChoice === 'scissors' && playerChoice === 'paper') {
-        console.log('Sorry, computer wins');
+        console.log('Sorry, computer wins with scissors vs. paper.');
         return 'C';
+    }
 }
 
 //Plays 5 rounds of the game and reports result at the end
@@ -78,16 +79,29 @@ function game() {
     //Initialize computer and player scores
     let compScore = 0;
     let playerScore = 0;
-    for (x = 0; i < 5; i++) {
+
+    let result;
+    for (i = 0; i < 5; i++) {
+        //Initialize result to empty string
+        result = '';
         //Get computer choice
         let compChoice = computerPlay()
         //Get players choice
         let playerChoice = userPlay()
         //Play one round of the game
-        let result = oneRound(compChoice,playerChoice)
+        result = oneRound(compChoice,playerChoice);
+        //Add to the score tallies
         (result === 'P')? playerScore += 1:compScore += 1;
     }
-    console.log('End of 5 rounds. ' + (compScore > playerScore)? 'The computer wins':'You won!');
+    //Print results
+    if (compScore === playerScore) {
+        console.log('End of 5 rounds. It\'s a tie!');
+    } else {
+        console.log('End of 5 rounds. ' + (compScore > playerScore)? 'The computer wins':'You won!');
+    }
 }
+
+//Initialize gameplay
+game();
 
 </script>
