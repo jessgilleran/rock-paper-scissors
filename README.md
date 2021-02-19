@@ -1,1 +1,1 @@
-Rock, paper, scissors console version for TOP.
+Rock, paper, scissors for The Odin Project.
